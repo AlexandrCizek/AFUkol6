@@ -1,0 +1,29 @@
+using AFUkol6.ViewModels;
+using AFUkol6.Views;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Markup.Xaml;
+
+namespace AFUkol6
+{
+    public class App : Application
+    {
+        public override void Initialize()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
+
+        public override void OnFrameworkInitializationCompleted()
+        {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new SeznamStudentuViewModel(),
+                };
+            }
+
+            base.OnFrameworkInitializationCompleted();
+        }
+    }
+}
